@@ -1,0 +1,167 @@
+<div class="app-container" (keydown)="onKeyDown($event)" tabindex="0">
+
+  <!-- Hero Section -->
+  <section class="hero" #heroSection id="hero" data-section="hero">
+    <div class="hearts-container">
+      @for (heart of hearts(); track $index) {
+        <div class="floating-heart" [style.left]="heart.left" [style.animation-duration]="heart.animationDuration" [style.animation-delay]="heart.animationDelay" [style.width]="heart.size" [style.height]="heart.size">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+      }
+    </div>
+    <div class="hero-content">
+      <div class="anniversary-badge">Happy Anniversary</div>
+      <h1 class="names">
+        <span class="script-font">White Tiger</span>
+        <span class="heart-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </span>
+        <span class="script-font">Winter</span>
+      </h1>
+      <!-- <p class="date">March 23, 2025 - March 22, 2026</p> -->
+      <p class="tagline">Years of togetherness, laughter, and forever</p>
+    </div>
+    <button class="scroll-indicator" (click)="scrollToNext()">
+      <span>Scroll to explore our story</span>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+      </svg>
+    </button>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline" id="timeline" data-section="timeline">
+    <h2 class="section-title">Our memories timeline</h2>
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      @for (item of timelineItems; track item.date; let i = $index) {
+        <div class="timeline-item" [class.left]="i % 2 === 0" [class.right]="i % 2 !== 0" [class.visible]="isVisible()['timeline']">
+          <div class="timeline-date">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            {{ item.date }}
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-image" *ngIf="item.image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy">
+            </div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Photo Gallery Section -->
+  <section class="gallery" id="gallery" data-section="gallery">
+    <h2 class="section-title">Places where I wanna do you</h2>
+    <div class="gallery-grid">
+      @for (image of galleryImages; track image.src; let i = $index) {
+        <div class="gallery-item" (click)="openLightbox(image)" [style.animation-delay]="(i * 0.1) + 's'">
+          <img [src]="image.src" [alt]="image.alt" loading="lazy">
+          <div class="gallery-overlay">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Love Letter Section -->
+  <section class="love-letter" id="letter" data-section="letter">
+    <div class="letter-card">
+      <div class="letter-border">
+        <div class="letter-corner top-left"></div>
+        <div class="letter-corner top-right"></div>
+        <div class="letter-corner bottom-left"></div>
+        <div class="letter-corner bottom-right"></div>
+        <h2 class="section-title">A Letter to You</h2>
+        <p class="letter-text">
+          My dearest Winter,
+        </p>
+        <p class="letter-text">
+         Today marks three beautiful years of us, and I wanted to take a moment to write something meaningful for you. Even though we are in different cities, the distance has never reduced what we share. In fact, it has made it stronger, more patient, and more real.
+        </p>
+        <p class="letter-text">
+          These three years have been full of memories, growth, and understanding. From small conversations to long calls, from missing each other to supporting each other through everything every part has been special to me. You have been a constant source of comfort and strength in my life.
+
+ <p class="letter-text">
+Being away from you is not easy, but knowing that you are there, believing in us, makes everything worth it. I truly appreciate your patience, your trust, and the way you stand by me no matter what.
+
+I look forward to the day when distance will no longer be a part of our story. Until then, I promise to keep putting effort, to keep growing, and to keep valuing what we have.
+  
+ </p>
+
+        <p class="letter-text">
+          
+          Here's to many more years of adventures, inside jokes, quiet moments, and endless chipka-chipki. You are my today and all of my tomorrows.
+        </p>
+        <p class="letter-signature script-font">
+          Forever yours,<br>
+          White Tiger 🐯
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown Section -->
+  <section class="countdown" id="countdown" data-section="countdown">
+    <h2 class="section-title">Our Time Together</h2>
+    <p class="countdown-subtitle">Every moment with you is a blessing</p>
+    <div class="countdown-container">
+      <div class="countdown-item">
+        <div class="countdown-number">{{ 1095 }}</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item">
+        <div class="countdown-number">{{ hours() }}</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item">
+        <div class="countdown-number">{{ minutes() }}</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item">
+        <div class="countdown-number">{{ seconds() }}</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="heart-divider">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+    </div>
+    <p class="footer-message">Happy Anniversary, my Baby</p>
+    <!-- <p class="footer-year">2026</p> -->
+  </footer>
+
+  <!-- Lightbox Modal -->
+  @if (selectedImage()) {
+    <div class="lightbox" (click)="closeLightbox()">
+      <div class="lightbox-content" (click)="$event.stopPropagation()">
+        <button class="lightbox-close" (click)="closeLightbox()">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <img [src]="selectedImage()!.src" [alt]="selectedImage()!.alt">
+      </div>
+    </div>
+  }
+
+</div>

@@ -1,0 +1,58 @@
+:root {
+  --primary: #8B2635;
+  --secondary: #F7E7CE;
+  --accent: #D4A574;
+  --background: #1A0F14;
+  --text-primary: #FFF5F0;
+  --text-secondary: #C9A86C;
+  --heart-accent: #E85A71;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.script-font {
+  font-family: 'Great Vibes', cursive;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--heart-accent);
+}
+
+::selection {
+  background: var(--heart-accent);
+  color: var(--text-primary);
+}
